@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Glow & Guide | Skin Routine</title>
+<link rel="stylesheet" href="style.css">
+
+
+<style>
+body{
+font-family: Arial, sans-serif;
+background: linear-gradient(to right,#dfe9f3,#ffffff);
+}
+
+header{
+text-align:center;
+margin-top:20px;
+}
+
+.card{
+width:500px;
+margin:40px auto;
+background:#f5f5f5;
+padding:30px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+select{
+width:100%;
+padding:12px;
+font-size:16px;
+border-radius:10px;
+border:2px solid #333;
+}
+
+#routine{
+margin-top:20px;
+text-align:left;
+}
+
+button{
+margin-top:30px;
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#f0627e;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#e84d6a;
+}
+</style>
+
+</head>
+<body>
+
+<script>
+if(!localStorage.getItem('loggedIn')){
+window.location.href='index.html';
+}
+</script>
+
+<header>
+<h1>Skin Care Routine with Brand Recommendations</h1>
+</header>
+
+<div class="card">
+
+<select onchange="showRoutine(this.value)">
+<option value="">Select Skin Type</option>
+<option value="oily">Oily</option>
+<option value="dry">Dry</option>
+<option value="combination">Combination</option>
+<option value="sensitive">Sensitive</option>
+<option value="acne">Acne Skin</option>
+<option value="acneprone">Acne-Prone Skin</option>
+<option value="pigmented">Pigmented Skin</option>
+<option value="dull">Dull Skin</option>
+<option value="clear">Clear Skin</option>
+</select>
+
+<ul id="routine"></ul>
+
+<button onclick="next()">Next → Skin Analysis</button>
+
+</div>
+
+<script>
+
+function showRoutine(type){
+
+const data={
+
+oily:[
+'🧴 Cleanser: Himalaya Oil Clear Lemon Face Wash',
+'💧 Serum: Minimalist Niacinamide 10%',
+'🪶 Moisturizer: Pond’s Super Light Gel',
+'☀ Sunscreen: Dot & Key Watermelon SPF 50'
+],
+
+dry:[
+'🧴 Cleanser: Cetaphil Gentle Cleanser',
+'💧 Serum: L’Oréal Hyaluronic Acid Serum',
+'🧴 Moisturizer: Nivea Soft Cream',
+'☀ Sunscreen: Lakme SPF 30'
+],
+
+combination:[
+'🧴 Cleanser: Simple Refreshing Face Wash',
+'💧 Serum: Plum Vitamin C Serum',
+'🪶 Moisturizer: Minimalist Sepicalm Moisturizer',
+'☀ Sunscreen: Aqualogica Glow+ SPF 50'
+],
+
+sensitive:[
+'🧴 Cleanser: Cetaphil Gentle Cleanser',
+'🌿 Soothing Gel: WOW Aloe Vera Gel',
+'🧴 Moisturizer: Bioderma Atoderm Cream',
+'☀ Sunscreen: Re’equil Mineral SPF 50'
+],
+
+acne:[
+'🧴 Cleanser: Minimalist Salicylic Acid Cleanser',
+'💧 Serum: The Derma Co 2% Salicylic Acid Serum',
+'🪶 Moisturizer: Pond’s Super Light Gel',
+'☀ Sunscreen: Aqualogica Detan+ SPF 50'
+],
+
+acneprone:[
+'🧴 Cleanser: Cetaphil Oily Skin Cleanser',
+'💧 Serum: Minimalist Niacinamide 10%',
+'🪶 Moisturizer: Sebamed Clear Face Gel',
+'☀ Sunscreen: Re’equil Ultra Matte SPF 50'
+],
+
+pigmented:[
+'🧴 Cleanser: Simple Face Wash',
+'💧 Serum: Minimalist Alpha Arbutin Serum',
+'🪶 Moisturizer: Dot & Key Vitamin C Moisturizer',
+'☀ Sunscreen: Dot & Key Watermelon SPF 50'
+],
+
+dull:[
+'🧴 Cleanser: Mamaearth Vitamin C Face Wash',
+'💧 Serum: Plum Vitamin C Serum',
+'🪶 Moisturizer: Lakme Peach Milk Moisturizer',
+'☀ Sunscreen: Aqualogica Glow+ SPF 50'
+],
+
+clear:[
+'🧴 Cleanser: Simple Refreshing Face Wash',
+'💧 Serum: Minimalist Vitamin C Serum',
+'🪶 Moisturizer: Pond’s Super Light Gel',
+'☀ Sunscreen: Dot & Key Watermelon SPF 50'
+]
+
+};
+
+if(type===""){
+document.getElementById('routine').innerHTML="";
+return;
+}
+
+document.getElementById('routine').innerHTML =
+data[type].map(i=>`<li>${i}</li>`).join('');
+
+}
+
+function next(){
+window.location.href='analysis.html';
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Glow & Guide | Consultant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(!localStorage.getItem('loggedIn')){
+window.location.href='index.html';
+}
+</script>
+
+
+<header><h1>Dermatologist Consultation</h1></header>
+
+
+<div class="card">
+<input placeholder="Name">
+<input type="email" placeholder="Email">
+<select>
+<option>Acne Prone Skin</option>
+<option>Pigmentation</option>
+<option>Sensitivity</option>
+</select>
+<input type="date">
+<button onclick="done()">Book Appointment</button>
+<p id="msg"></p>
+</div>
+
+
+<script>
+function done(){
+document.getElementById('msg').innerText='Appointment booked successfully ✅';
+}
+</script>
+</body>
+</html>

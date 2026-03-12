@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Glow & Guide | Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>✨ Glow & Guide ✨</h1>
+<p>Your Personal Skincare Companion</p>
+</header>
+
+<div class="card">
+<h2>Login</h2>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="msg"></p>
+</div>
+
+<script>
+function login(){
+const user=document.getElementById('username').value;
+if(user){
+localStorage.setItem('loggedIn','true');
+window.location.href='routine.html';
+}else{
+document.getElementById('msg').innerText='Please enter login details';
+}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Glow & Guide | Skin Analysis</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+if(!localStorage.getItem("loggedIn")){
+window.location.href = "index.html";
+}
+</script>
+
+<header>
+<h1>Skin Analysis</h1>
+<p>Upload your friend's skin image for analysis</p>
+</header>
+
+<div class="card">
+
+<h3>📷 Upload Skin Image</h3>
+<input type="file" id="skinImage" accept="image/*" onchange="previewImage()">
+
+<img id="preview" style="width:100%; margin-top:10px; display:none; border-radius:10px;">
+
+<button onclick="analyzeSkin()">Analyze Skin</button>
+
+<p id="result" style="margin-top:15px;"></p>
+
+<!-- ================= Hospital Section ================= -->
+<div id="hospitalSection" style="display:none; margin-top:20px;">
+
+<h3>🏥 Recommended Skin Hospitals – Trichy</h3>
+
+<ul>
+<li>Radiance Skin Clinic – Thillai Nagar</li>
+<li>Lakshini Skin & Hair Centre – Tennur</li>
+<li>Apollo Speciality Hospital – Cantonment</li>
+<li>Vibha Skin Clinic – Woraiyur</li>
+</ul>
+
+<h3>📝 Book Dermatologist Appointment</h3>
+
+<input type="text" id="name" placeholder="Your Name">
+<input type="email" id="email" placeholder="Email">
+<input type="tel" id="phone" placeholder="Mobile Number">
+
+<select id="hospital">
+<option value="">Select Hospital</option>
+<option>Radiance Skin Clinic</option>
+<option>Lakshini Skin & Hair Centre</option>
+<option>Apollo Speciality Hospital</option>
+<option>Vibha Skin Clinic</option>
+</select>
+
+<input type="date" id="date">
+
+<button onclick="bookAppointment()">Book Appointment</button>
+
+<p id="bookingMsg"></p>
+
+</div>
+
+</div>
+
+<script>
+
+function analyzeSkin(){
+
+const imgInput = document.getElementById("skinImage");
+const result = document.getElementById("result");
+const hospitalSection = document.getElementById("hospitalSection");
+
+if(imgInput.files.length === 0){
+result.innerText = "⚠️ Please upload a skin image.";
+hospitalSection.style.display = "none";
+return;
+}
+
+const fileName = imgInput.files[0].name.toLowerCase();
+
+if(fileName.includes("acneprone")){
+
+result.innerHTML =
+"🔴 <b>Skin Type:</b> Acne-Prone Skin<br><br>"+
+"🧴 <b>Recommended Products:</b><br>"+
+"• Cleanser: Cetaphil Oily Skin Cleanser<br>"+
+"• Serum: Minimalist Niacinamide 10%<br>"+
+"• Moisturizer: Sebamed Clear Face Gel<br>"+
+"• Sunscreen: Re’equil Ultra Matte SPF 50<br><br>"+
+"⚠️ Dermatologist consultation recommended.";
+
+hospitalSection.style.display="block";
+
+}
+
+else if(fileName.includes("acne") || fileName.includes("pimple")){
+
+result.innerHTML =
+"🔴 <b>Skin Type:</b> Acne Skin<br><br>"+
+"🧴 <b>Recommended Products:</b><br>"+
+"• Cleanser: Minimalist Salicylic Acid Cleanser<br>"+
+"• Serum: The Derma Co Salicylic Acid Serum<br>"+
+"• Moisturizer: Plum Oil Free Moisturizer<br>"+
+"• Sunscreen: Aqualogica Acne-Safe SPF 50<br><br>"+
+"⚠️ Dermatologist consultation recommended.";
+
+hospitalSection.style.display="block";
+
+}
+
+else if(fileName.includes("dry")){
+
+result.innerHTML =
+"🟡 <b>Skin Type:</b> Dry Skin<br><br>"+
+"🧴 <b>Recommended Products:</b><br>"+
+"• Cleanser: Cetaphil Gentle Cleanser<br>"+
+"• Serum: L’Oréal Hyaluronic Acid Serum<br>"+
+"• Moisturizer: Nivea Soft Cream<br>"+
+"• Sunscreen: Lakme SPF 30";
+
+hospitalSection.style.display="none";
+
+}
+
+else{
+
+result.innerHTML =
+"🟢 <b>Skin Type:</b> Clear / Normal Skin ✨<br><br>"+
+"🧴 <b>Recommended Products:</b><br>"+
+"• Cleanser: Simple Refreshing Face Wash<br>"+
+"• Serum: Plum Vitamin C Serum<br>"+
+"• Moisturizer: Minimalist Sepicalm Moisturizer<br>"+
+"• Sunscreen: Dot & Key Watermelon SPF 50<br><br>"+
+"Maintain regular skincare routine.";
+
+hospitalSection.style.display="none";
+
+}
+
+}
+
+</script>
+</body>
+</html>
